@@ -66,7 +66,7 @@ const webinars = [
     photoUrl: DummyImage,
     backgroundColor: theme.palette.yellow.main,
     topic: "Front End Engineering",
-    title: "React and React Native Long Name Constaint",
+    title: "React and React Native Long Name Constraint",
     startDate: dayjs().format("DD MMM YYYY"),
     startTime: dayjs().format("hh:mm A"),
     endTime: dayjs().add(1, "hour").format("hh:mm A"),
