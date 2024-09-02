@@ -1,2 +1,6 @@
-# webinar-app
-Webinar Management App
+Install it and run:
+
+```bash
+npm install
+npm run dev
+```
