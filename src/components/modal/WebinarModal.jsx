@@ -32,7 +32,6 @@ const WebinarModal = ({ open, onClose, addWebinar, updatedData }) => {
    * @param {object} formData - The data submitted from the form.
    */
   const handleFormSubmit = (formData) => {
-    // console.log("Form Data:", formData);
     addWebinar(formData);
   };
 

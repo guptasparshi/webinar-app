@@ -17,10 +17,6 @@ const WebinarCard = ({ cardDetails, onDelete, onEdit }) => {
   // Input date range
   const start = dayjs(`${cardDetails.startDate} ${cardDetails.startTime}`, 'DD MMM YYYY hh:mm A')
   const end = dayjs(`${cardDetails.endTime}`, 'hh:mm A');
-  // console.log(cardDetails.startDate)
-  // console.log(cardDetails.startTime)
-  // console.log(cardDetails.endTime)
-  // console.log(start)
 
   // Format date
   const formattedDate = start.format('dddd • MMMM D, h:mm A') + ' - ' + cardDetails.endTime;
@@ -64,7 +60,7 @@ const WebinarCard = ({ cardDetails, onDelete, onEdit }) => {
           {cardDetails.topic}
         </Typography>
         <Typography variant="h6" color="black" fontWeight="600">
-          {cardDetails.title}
+          {cardDetails.title.length > 34 ? `${cardDetails.title.substring(0, 34)}...` : cardDetails.title}
         </Typography>
         <Typography variant="body2" color="black">
           {formattedDate}
