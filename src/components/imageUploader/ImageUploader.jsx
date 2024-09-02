@@ -7,7 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
  * @param {function} onImageUpload - Callback function to handle the uploaded image data.
  * @param {string|null} imageUrl - Optional URL for the initial image preview.
  */
-function ImageUpload({ onImageUpload, imageUrl = null }) {
+function ImageUploader({ onImageUpload, imageUrl = null }) {
   // State to manage the image preview
   const [imagePreview, setImagePreview] = useState(imageUrl);
 
@@ -82,4 +82,4 @@ function ImageUpload({ onImageUpload, imageUrl = null }) {
   );
 }
 
-export default ImageUpload;
+export default ImageUploader;

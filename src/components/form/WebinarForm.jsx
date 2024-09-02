@@ -7,7 +7,7 @@ import {
   Divider,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import ImageUpload from "../imageUpload/ImageUpload";
+import ImageUploader from "../imageUploader/ImageUploader";
 import {
   TimePicker,
   LocalizationProvider,
@@ -49,6 +49,19 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
         }
   );
 
+  const [error, setError] = useState("");
+
+  
+  const validateTime = () => {
+    const start = dayjs(formData.startTime, "hh:mm A");
+    const end = dayjs(formData.endTime, "hh:mm A");
+    if (!start.isBefore(end)) {
+      setError("End time must be after start time.");
+      return false;
+    }
+    setError("");
+    return true;
+  };
   // Function to handle form close
   const handleClose = () => {
     setFormData({});
@@ -81,7 +94,9 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(formData);
+    if (validateTime()) {
+      onSubmit(formData);
+    }
   };
 
   return (
@@ -100,7 +115,6 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
             flexDirection="column"
             flex={1}
             justifyContent="space-between"
-            // border="2px solid green"
           >
             {/* Instructor Name Input */}
             <Grid2 item md={12} paddingY="6px">
@@ -181,7 +195,7 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
           >
             {/* Image Upload Component */}
             <Grid2 item xs={12} sm={6}>
-              <ImageUpload
+              <ImageUploader
                 onImageUpload={handleImageUpload}
                 imageUrl={formData.photoUrl}
               />
@@ -304,6 +318,7 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
                   <TimePicker
                     defaultValue={dayjs(formData.startTime, "hh:mm A")}
                     disablePast
+                    error={!!error}
                     onChange={(newValue) =>
                       handleDateTimeChange(newValue, "startTime")
                     }
@@ -336,6 +351,7 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
                 </Typography>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <TimePicker
+                    error={!!error}
                     defaultValue={dayjs(formData.endTime, "hh:mm A")}
                     minTime={dayjs(formData.startTime, "hh:mm A")}
                     disablePast

@@ -15,11 +15,11 @@ dayjs.extend(advancedFormat);
 
 const WebinarCard = ({ cardDetails, onDelete, onEdit }) => {
   // Input date range
-  const start = dayjs(`${cardDetails.startDate} ${cardDetails.startTime}`, 'DD MMM YYYY hh:mm A')
-  const end = dayjs(`${cardDetails.endTime}`, 'hh:mm A');
-
+  const start = dayjs(`${cardDetails.startDate.trim()} ${cardDetails.startTime.trim()}`, 'D MMM YYYY hh:mm A')
+  
   // Format date
   const formattedDate = start.format('dddd • MMMM D, h:mm A') + ' - ' + cardDetails.endTime;
+  
   return (
     <Card
       sx={{ maxWidth: 450, padding: "20px", borderRadius: "24px", flexGrow: 1 }}
