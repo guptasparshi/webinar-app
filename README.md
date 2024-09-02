@@ -2,7 +2,7 @@
 
 ## Deployed Application
 
-**Check out the live version of the Webinar App here: [Webinar App](https://guptasparshi.github.io/webinar-app/)**
+**Check out the live version of the Webinar App here: [Webinar App](https://webinar-app-dusky.vercel.app/)**
 
 ---
 
