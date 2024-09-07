@@ -21,7 +21,6 @@ The Webinar App is a web application designed to manage and schedule webinars ef
 ## Technologies Used
 
 - **Frontend**: React, Material-UI
-- **State Management**: React Hooks, Redux
 
 ## Getting Started
 

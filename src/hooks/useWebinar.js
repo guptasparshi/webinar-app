@@ -1,21 +1,103 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setWebinars } from "../reducer/webinarReducer";
+import DummyImage from "../assests/dummy.png";
+import theme from "../theme";
+import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
+
 
 /**
  * Custom hook for managing webinar state and operations.
  * @returns {Object} Functions and state variables for webinar management.
  */
+
+const initialWebinars = [
+    {
+      id: uuidv4(),
+      name: "Matthew Martin",
+      role: "Lead Front End Developer",
+      company: "Google",
+      photoUrl: DummyImage,
+      backgroundColor: theme.palette.purple.main,
+      topic: "Front End Engineering",
+      title: "React and React Native",
+      startDate: dayjs().format("DD MMM YYYY"),
+      startTime: dayjs().format("hh:mm A"),
+      endTime: dayjs().add(1, "hour").format("hh:mm A"),
+    },
+    {
+      id: uuidv4(),
+      name: "IK Expert",
+      role: "Leadership Role at a FAANG",
+      company: "Company",
+      photoUrl: DummyImage,
+      backgroundColor: theme.palette.pink.main,
+      topic: "Front End Engineering",
+      title: "How to get a job at FAANG",
+      startDate: dayjs().format("DD MMM YYYY"),
+      startTime: dayjs().format("hh:mm A"),
+      endTime: dayjs().add(1, "hour").format("hh:mm A"),
+    },
+    {
+      id: uuidv4(),
+      name: "Matthew Martin",
+      role: "Lead Front End Developer",
+      company: "Google",
+      photoUrl: DummyImage,
+      backgroundColor: theme.palette.teal.main,
+      topic: "Career",
+      title: "Ask Me Anything",
+      startDate: dayjs().format("DD MMM YYYY"),
+      startTime: dayjs().format("hh:mm A"),
+      endTime: dayjs().add(1, "hour").format("hh:mm A"),
+    },
+    {
+      id: uuidv4(),
+      name: "Matthew Martin",
+      role: "Lead Front End Developer",
+      company: "Google",
+      photoUrl: DummyImage,
+      backgroundColor: theme.palette.primary.main,
+      topic: "Front End Engineering",
+      title: "React and React Native",
+      startDate: dayjs().format("DD MMM YYYY"),
+      startTime: dayjs().format("hh:mm A"),
+      endTime: dayjs().add(1, "hour").format("hh:mm A"),
+    },
+    {
+      id: uuidv4(),
+      name: "Matthew Martin",
+      role: "Lead Front End Developer",
+      company: "Google",
+      photoUrl: DummyImage,
+      backgroundColor: theme.palette.yellow.main,
+      topic: "Front End Engineering",
+      title: "React and React Native Long Name Constraint",
+      startDate: dayjs().format("DD MMM YYYY"),
+      startTime: dayjs().format("hh:mm A"),
+      endTime: dayjs().add(1, "hour").format("hh:mm A"),
+    },
+    {
+      id: uuidv4(),
+      name: "Matthew Martin",
+      role: "Lead Front End Developer",
+      company: "Google",
+      photoUrl: DummyImage,
+      backgroundColor: theme.palette.green.main,
+      topic: "Front End Engineering",
+      title: "React and React Native",
+      startDate: dayjs().format("DD MMM YYYY"),
+      startTime: dayjs().format("hh:mm A"),
+      endTime: dayjs().add(1, "hour").format("hh:mm A"),
+    },
+  ];
+
 export const useWebinar = () => {
     // Local state for managing modal visibility and form data
     const [open, setOpen] = useState(false);
     const [topic, setTopic] = useState("");
     const [search, setSearch] = useState("");
-    const [webinarData, setWebinarData] = useState(useSelector((state) => state.webinar.webinars));
+    const [webinarData, setWebinarData] = useState(initialWebinars);
     const [updatedData, setUpdatedData] = useState({});
-    
-    // Redux dispatch function for updating global state
-    const dispatch = useDispatch();
 
     // Generate unique list of topics from webinar data
     const topics = [...new Set(webinarData?.map((item) => item.topic))];
@@ -97,7 +179,6 @@ export const useWebinar = () => {
         }
 
         setWebinarData(updatedWebinarData);
-        dispatch(setWebinars(updatedWebinarData));
         setUpdatedData({});
         handleClose();
     };
