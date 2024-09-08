@@ -10,9 +10,9 @@ import CloseIcon from "@mui/icons-material/Close";
  * @param {boolean} isModalOpen - Determines if the modal is open or closed.
  * @param {function} onClose - Function to close the modal.
  * @param {function} upsertWebinar - Function to add or update a webinar.
- * @param {object} updatedData - Data of the webinar being edited, if applicable.
+ * @param {object} updatedWebinarData - Data of the webinar being edited, if applicable.
  */
-const WebinarModal = ({ isModalOpen, onClose, upsertWebinar, updatedData }) => {
+const WebinarModal = ({ isModalOpen, onClose, upsertWebinar, updatedWebinarData }) => {
   // Styles for the modal container
   const style = {
     position: "absolute",
@@ -60,7 +60,7 @@ const WebinarModal = ({ isModalOpen, onClose, upsertWebinar, updatedData }) => {
         <WebinarForm
           onClose={onClose}
           onSubmit={handleFormSubmit}
-          updatedData={updatedData}
+          updatedWebinarData={updatedWebinarData}
         />
       </Box>
     </Modal>

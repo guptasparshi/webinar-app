@@ -29,11 +29,11 @@ function getRandomColor() {
   return `rgb(${r},${g},${b})`;
 }
 
-const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
+const WebinarForm = ({ onClose, onSubmit, updatedWebinarData }) => {
   // State to manage form data
   const [formData, setFormData] = useState(
-    updatedData?.id
-      ? updatedData
+    updatedWebinarData?.id
+      ? updatedWebinarData
       : {
           id: uuidv4(),
           name: "",
@@ -397,7 +397,7 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
             fontSize: "12px",
           }}
         >
-          {updatedData.id ? "Update Webinar" : "Create Webinar"}
+          {updatedWebinarData.id ? "Update Webinar" : "Create Webinar"}
         </Button>
         <Button
           variant="text"

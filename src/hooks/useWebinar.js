@@ -97,7 +97,7 @@ export const useWebinar = () => {
     const [topic, setTopic] = useState("");
     const [search, setSearch] = useState("");
     const [webinarData, setWebinarData] = useState(initialWebinars);
-    const [updatedData, setUpdatedData] = useState({});
+    const [updatedWebinarData, setupdatedWebinarData] = useState({});
 
     // Generate unique list of topics from webinar data
     const topics = [...new Set(webinarData?.map((item) => item.topic))];
@@ -112,7 +112,7 @@ export const useWebinar = () => {
      */
     const handleCloseModal = () => {
         setIsModalOpen(false);
-        setUpdatedData({});
+        setupdatedWebinarData({});
     };
 
     /**
@@ -154,7 +154,7 @@ export const useWebinar = () => {
      */
     const handleWebinarEdit = (data) => {
         setIsModalOpen(true);
-        setUpdatedData(data);
+        setupdatedWebinarData(data);
     };
 
     /**
@@ -179,7 +179,7 @@ export const useWebinar = () => {
         }
 
         setWebinarData(updatedWebinarData);
-        setUpdatedData({});
+        setupdatedWebinarData({});
         handleCloseModal();
     };
 
@@ -188,7 +188,7 @@ export const useWebinar = () => {
         isModalOpen,
         handleCloseModal,
         handleWebinarUpsert,
-        updatedData,
+        updatedWebinarData,
         search,
         setSearch,
         topics,

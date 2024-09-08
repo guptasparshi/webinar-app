@@ -10,9 +10,9 @@ import WebinarModal from "../modal/WebinarModal";
  * @param {function} handleOpenModal - Function to handle the opening of the modal.
  * @param {function} handleCloseModal - Function to handle the closing of the modal.
  * @param {function} handleWebinarUpsert - Function to handle the submission of webinar data.
- * @param {object} updatedData - Data to pre-populate the modal form for editing.
+ * @param {object} updatedWebinarData - Data to pre-populate the modal form for editing.
  */
-const WebinarHeader = ({ isModalOpen, handleOpenModal, handleCloseModal, handleWebinarUpsert, updatedData }) => {
+const WebinarHeader = ({ isModalOpen, handleOpenModal, handleCloseModal, handleWebinarUpsert, updatedWebinarData }) => {
   return (
     <>
       {/* Header container with flexible layout */}
@@ -42,7 +42,7 @@ const WebinarHeader = ({ isModalOpen, handleOpenModal, handleCloseModal, handleW
           isModalOpen={isModalOpen}
           onClose={handleCloseModal}
           upsertWebinar={handleWebinarUpsert}
-          updatedData={updatedData}
+          updatedWebinarData={updatedWebinarData}
         />
       </Box>
     </>

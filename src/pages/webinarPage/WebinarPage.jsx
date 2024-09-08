@@ -15,7 +15,7 @@ const WebinarPage = () => {
     isModalOpen,
     handleCloseModal,
     handleWebinarUpsert,
-    updatedData,
+    updatedWebinarData,
     search,
     setSearch,
     topics,
@@ -34,7 +34,7 @@ const WebinarPage = () => {
         handleOpenModal={handleOpenModal}
         handleCloseModal={handleCloseModal}
         handleWebinarUpsert={handleWebinarUpsert}
-        updatedData={updatedData}
+        updatedWebinarData={updatedWebinarData}
       />
       
       {/* Divider separates the header from the content below */}
