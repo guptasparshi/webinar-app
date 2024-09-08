@@ -7,12 +7,12 @@ import CloseIcon from "@mui/icons-material/Close";
  * WebinarModal component renders a modal dialog to create or update a webinar.
  * It includes a form and a close button.
  *
- * @param {boolean} open - Determines if the modal is open or closed.
+ * @param {boolean} isModalOpen - Determines if the modal is open or closed.
  * @param {function} onClose - Function to close the modal.
- * @param {function} addWebinar - Function to add or update a webinar.
+ * @param {function} upsertWebinar - Function to add or update a webinar.
  * @param {object} updatedData - Data of the webinar being edited, if applicable.
  */
-const WebinarModal = ({ open, onClose, addWebinar, updatedData }) => {
+const WebinarModal = ({ isModalOpen, onClose, upsertWebinar, updatedData }) => {
   // Styles for the modal container
   const style = {
     position: "absolute",
@@ -27,16 +27,16 @@ const WebinarModal = ({ open, onClose, addWebinar, updatedData }) => {
   };
 
   /**
-   * Handles form submission by logging the form data and passing it to the addWebinar function.
+   * Handles form submission by logging the form data and passing it to the upsertWebinar function.
    *
    * @param {object} formData - The data submitted from the form.
    */
   const handleFormSubmit = (formData) => {
-    addWebinar(formData);
+    upsertWebinar(formData);
   };
 
   return (
-    <Modal open={open} onClose={onClose} sx={{ backdropFilter: "blur(5px)" }}>
+    <Modal open={isModalOpen} onClose={onClose} sx={{ backdropFilter: "blur(5px)" }}>
       <Box sx={style}>
         {/* Header section with title and close icon */}
         <Grid2

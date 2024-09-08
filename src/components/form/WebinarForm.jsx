@@ -63,7 +63,7 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
     return true;
   };
   // Function to handle form close
-  const handleClose = () => {
+  const handleCloseModal = () => {
     setFormData({});
     onClose();
   };
@@ -402,7 +402,7 @@ const WebinarForm = ({ onClose, onSubmit, updatedData }) => {
         <Button
           variant="text"
           color="primary"
-          onClick={handleClose}
+          onClick={handleCloseModal}
           sx={{ textTransform: "none", fontSize: "10px" }}
         >
           Cancel

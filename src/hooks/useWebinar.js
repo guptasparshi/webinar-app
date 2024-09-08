@@ -93,7 +93,7 @@ const initialWebinars = [
 
 export const useWebinar = () => {
     // Local state for managing modal visibility and form data
-    const [open, setOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [topic, setTopic] = useState("");
     const [search, setSearch] = useState("");
     const [webinarData, setWebinarData] = useState(initialWebinars);
@@ -105,13 +105,13 @@ export const useWebinar = () => {
     /**
      * Opens the modal and resets form data.
      */
-    const handleOpen = () => setOpen(true);
+    const handleOpenModal = () => setIsModalOpen(true);
 
     /**
      * Closes the modal and clears the updated data.
      */
-    const handleClose = () => {
-        setOpen(false);
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
         setUpdatedData({});
     };
 
@@ -133,7 +133,7 @@ export const useWebinar = () => {
     };
 
     // Filter webinars based on selected topic and search term
-    const filteredCard = webinarData.filter(
+    const filteredCards = webinarData.filter(
         (item) =>
             (item.topic === topic || topic === "") &&
             searchInCardDetails(item, search)
@@ -143,7 +143,7 @@ export const useWebinar = () => {
      * Deletes a webinar by its ID.
      * @param {number} id - The ID of the webinar to delete.
      */
-    const handleDelete = (id) => {
+    const handleWebinarDelete = (id) => {
         const newData = webinarData.filter((item) => item.id !== id);
         setWebinarData(newData);
     };
@@ -152,8 +152,8 @@ export const useWebinar = () => {
      * Opens the modal with data pre-filled for editing.
      * @param {Object} data - The data of the webinar to edit.
      */
-    const handleEdit = (data) => {
-        setOpen(true);
+    const handleWebinarEdit = (data) => {
+        setIsModalOpen(true);
         setUpdatedData(data);
     };
 
@@ -161,7 +161,7 @@ export const useWebinar = () => {
      * Handles adding or updating webinar data.
      * @param {Object} updatedWebinar - The updated webinar data.
      */
-    const handleWebinarData = (updatedWebinar) => {
+    const handleWebinarUpsert = (updatedWebinar) => {
         const checkWebinar = webinarData.find(
             (webinar) => webinar.id === updatedWebinar.id
         );
@@ -180,22 +180,22 @@ export const useWebinar = () => {
 
         setWebinarData(updatedWebinarData);
         setUpdatedData({});
-        handleClose();
+        handleCloseModal();
     };
 
     return {
-        handleOpen,
-        open,
-        handleClose,
-        handleWebinarData,
+        handleOpenModal,
+        isModalOpen,
+        handleCloseModal,
+        handleWebinarUpsert,
         updatedData,
         search,
         setSearch,
         topics,
         topic,
         setTopic,
-        filteredCard,
-        handleDelete,
-        handleEdit
+        filteredCards,
+        handleWebinarDelete,
+        handleWebinarEdit
     };
 }

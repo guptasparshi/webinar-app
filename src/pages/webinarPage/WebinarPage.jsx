@@ -11,29 +11,29 @@ import WebinarList from "../../components/list/WebinarList";
 const WebinarPage = () => {
   // Destructure all necessary functions and state variables from the custom useWebinar hook
   const {
-    handleOpen,
-    open,
-    handleClose,
-    handleWebinarData,
+    handleOpenModal,
+    isModalOpen,
+    handleCloseModal,
+    handleWebinarUpsert,
     updatedData,
     search,
     setSearch,
     topics,
     topic,
     setTopic,
-    filteredCard,
-    handleDelete,
-    handleEdit
+    filteredCards,
+    handleWebinarDelete,
+    handleWebinarEdit
   } = useWebinar();
   
   return (
     <>
       {/* Webinar header that includes the modal to add or edit a webinar */}
       <WebinarHeader
-        open={open}
-        handleOpen={handleOpen}
-        handleClose={handleClose}
-        handleWebinarData={handleWebinarData}
+        isModalOpen={isModalOpen}
+        handleOpenModal={handleOpenModal}
+        handleCloseModal={handleCloseModal}
+        handleWebinarUpsert={handleWebinarUpsert}
         updatedData={updatedData}
       />
       
@@ -68,9 +68,9 @@ const WebinarPage = () => {
       
       {/* List of webinars that match the search and topic filters */}
       <WebinarList
-        filteredCard={filteredCard}
-        handleDelete={handleDelete}
-        handleEdit={handleEdit}
+        filteredCards={filteredCards}
+        handleWebinarDelete={handleWebinarDelete}
+        handleWebinarEdit={handleWebinarEdit}
       />
     </>
   );
