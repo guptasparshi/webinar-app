@@ -48,7 +48,7 @@ const WebinarModal = ({ isModalOpen, onClose, upsertWebinar, updatedWebinarData 
           marginY={2}
         >
           <Typography variant="h6" component="h2">
-            Create Webinar
+            {updatedWebinarData.id ? "Update Webinar" : "Create Webinar"}
           </Typography>
           <CloseIcon onClick={onClose} sx={{ cursor: "pointer" }} />
         </Grid2>
